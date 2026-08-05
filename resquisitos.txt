@@ -1,2 +1,0 @@
-Python < 13.0
-pygame==2.6.1

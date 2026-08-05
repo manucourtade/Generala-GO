@@ -1,8 +1,9 @@
 import pygame
 from datos.constantes import VOLUMEN
+from datos.rutas import resource_path
 
-MUSICA_PRINCIPAL = "assets/musica_pokemon.mp3"
-EFECTO_CLICK = "assets/pokemon_boton.wav"
+MUSICA_PRINCIPAL = resource_path("assets/musica_pokemon.mp3")
+EFECTO_CLICK = resource_path("assets/pokemon_boton.wav")
 
 def reproducir_musica(ruta, loop=True):
     pygame.mixer.music.load(ruta)

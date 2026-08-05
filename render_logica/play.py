@@ -1,4 +1,5 @@
 import pygame
+from datos.rutas import resource_path
 import random
 from render.render_pantalla import fondo_creditos, volver_menu
 from puntaje.plantilla_puntaje import jugada_generala, jugada_uno_al_seis, jugada_full, jugada_poker, jugada_escalera
@@ -6,12 +7,12 @@ from estadisticas.archivo_json_csv import realizar_registro, archivo
 from render.render_elementos import crear_boton_rect, fondo_play
 from datos.constantes import WIDTH,HEIGHT
 
-imagen_dado_1 = pygame.image.load("assets/pikachu.png")
-imagen_dado_2 = pygame.image.load("assets/bulbasur.png")
-imagen_dado_3 = pygame.image.load("assets/charmander.png")
-imagen_dado_4 = pygame.image.load("assets/squirtle.png")
-imagen_dado_5 = pygame.image.load("assets/snorlax.png")
-imagen_dado_6 = pygame.image.load("assets/gengar.png")
+imagen_dado_1 = pygame.image.load(resource_path("assets/pikachu.png"))
+imagen_dado_2 = pygame.image.load(resource_path("assets/bulbasur.png"))
+imagen_dado_3 = pygame.image.load(resource_path("assets/charmander.png"))
+imagen_dado_4 = pygame.image.load(resource_path("assets/squirtle.png"))
+imagen_dado_5 = pygame.image.load(resource_path("assets/snorlax.png"))
+imagen_dado_6 = pygame.image.load(resource_path("assets/gengar.png"))
 
 pokemon_imagenes = [
     imagen_dado_1,

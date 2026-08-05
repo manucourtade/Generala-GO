@@ -1,16 +1,17 @@
 import pygame
 from datos.constantes import HEIGHT, WIDTH
+from datos.rutas import resource_path
 
-LOGO = pygame.image.load('assets/logo.png')
+LOGO = pygame.image.load(resource_path('assets/logo.png'))
 LOGO = pygame.transform.scale(LOGO, (500, 500))
 
-FONDO = pygame.image.load('assets/pokemonfondo.jpg')
+FONDO = pygame.image.load(resource_path('assets/pokemonfondo.jpg'))
 FONDO = pygame.transform.scale(FONDO, (WIDTH, HEIGHT))
 
-FONDO_CREDITOS = pygame.image.load('assets/fondocre.jpg')
+FONDO_CREDITOS = pygame.image.load(resource_path('assets/fondocre.jpg'))
 FONDO_CREDITOS = pygame.transform.scale(FONDO_CREDITOS, (WIDTH, HEIGHT))
 
-FONDO_PLAY = pygame.image.load('assets/fondojugar.jpg')
+FONDO_PLAY = pygame.image.load(resource_path('assets/fondojugar.jpg'))
 FONDO_PLAY = pygame.transform.scale(FONDO_PLAY, (WIDTH, HEIGHT))
 
 # ENCAPSULAMIENTO

@@ -1,0 +1,35 @@
+{
+    "default": {
+        "ventana": {
+            "w": 1280,
+            "h": 720,
+            "titulo": "Generala GO!"
+        },
+        "audio": {
+            "vol": 0.01
+        },
+        "colores": {
+            "fondo": [
+                196,
+                101,
+                86
+            ],
+            "primario": [],
+            "secundario": [
+                255,
+                215,
+                0
+            ],
+            "texto_claro": [
+                255,
+                255,
+                255
+            ],
+            "texto_oscuro": [
+                0,
+                0,
+                0
+            ]
+        }
+    }
+}

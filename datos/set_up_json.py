@@ -1,8 +1,8 @@
 import json
 import os
+from datos.rutas import writable_path
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-json_archive = os.path.join(BASE_DIR, 'set_up.json')
+json_archive = writable_path('datos/set_up.json')
 
 config__ = {
     'default': {

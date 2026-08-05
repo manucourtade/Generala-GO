@@ -2,6 +2,7 @@ import pygame
 from datos.constantes import WIDTH, HEIGHT
 from render.render_elementos import logo_juego, fondo_menu, crear_boton_rect, fondo_creditos
 from estadisticas.archivo_json_csv import leer_archivo_csv, archivo
+from datos.rutas import resource_path
 
 COLOR_VERDE = (15, 112, 1)
 COLOR_BLANCO = (255, 255, 255)
@@ -95,7 +96,7 @@ def pantalla_creditos(pantalla):
     volver_menu(pantalla)
 
 def pantalla_estadisticas(pantalla):
-    fondo_stats = pygame.image.load('assets/fondo_stats.png')
+    fondo_stats = pygame.image.load(resource_path('assets/fondo_stats.png'))
     fondo_stats = pygame.transform.scale(fondo_stats, (WIDTH, HEIGHT))
     pantalla.blit(fondo_stats, (0, 0))
 

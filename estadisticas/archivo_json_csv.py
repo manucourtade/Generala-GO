@@ -1,8 +1,9 @@
 import os
 import json
+from datos.rutas import writable_path
 
-archivo = 'estadisticas/historial.csv'
-archivo_json = 'estadisticas/niveles.json'
+archivo = writable_path('estadisticas/historial.csv')
+archivo_json = writable_path('estadisticas/niveles.json')
 
 
 def realizar_registro(nombre_archivo, nombre, puntos):
