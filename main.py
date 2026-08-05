@@ -1,0 +1,54 @@
+import pygame 
+import datos.constantes as con
+from render.render_pantalla import pantalla_principal, pantalla_creditos, pantalla_estadisticas
+from audio.musica import reproducir_musica, MUSICA_PRINCIPAL
+from eventos.nuestros_eventos import gestionar_eventos
+from render_logica.play import pantalla_jugar
+
+
+pygame.init()
+
+pantalla = pygame.display.set_mode((con.WIDTH, con.HEIGHT))
+pygame.display.set_caption(con.TITLE)
+reloj = pygame.time.Clock()
+FPS = 60
+pantalla_actual = "menu"
+musica_actual = None
+bandera_musica_menu = False
+
+
+botones = None
+
+ejecutando = True
+
+while ejecutando:
+    for evento in pygame.event.get():
+        if evento.type == pygame.QUIT:
+            ejecutando = False
+        else:
+            pantalla_actual = gestionar_eventos(evento, pantalla_actual, botones)
+
+    # Lógica de juego
+    if pantalla_actual == "menu":
+        if musica_actual != "menu":
+            reproducir_musica(MUSICA_PRINCIPAL)
+            musica_actual = "menu"
+        botones = pantalla_principal(pantalla)
+        
+    elif pantalla_actual == "jugar":
+        pantalla_actual = pantalla_jugar(pantalla)
+    elif pantalla_actual == "creditos":
+        botones = pantalla_creditos(pantalla)
+    elif pantalla_actual == "estadisticas":
+        botones = pantalla_estadisticas(pantalla)
+    elif pantalla_actual == "salir":
+        ejecutando = False
+    
+    # Actualización de pantalla
+    pygame.display.flip()
+
+    # Velocidad de frames por segundo
+    reloj.tick(FPS)
+
+# Finalización del programa total
+pygame.quit()
