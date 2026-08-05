@@ -1,0 +1,41 @@
+# Entornos virtuales
+.venv/
+venv/
+env/
+ENV/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+*.pyd
+
+# PyInstaller
+build/
+*.spec.bak
+
+# Ejecutables generados
+# Si queres compartir binarios, subilos a GitHub Releases en lugar de versionarlos.
+dist/main
+dist/main.exe
+
+# Datos generados por el juego
+dist/datos/
+dist/estadisticas/
+estadisticas/historial.csv
+
+# Logs y temporales
+*.log
+*.tmp
+*.bak
+
+# IDEs / editores
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Sistema operativo
+.DS_Store
+Thumbs.db

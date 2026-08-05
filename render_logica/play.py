@@ -7,24 +7,28 @@ from estadisticas.archivo_json_csv import realizar_registro, archivo
 from render.render_elementos import crear_boton_rect, fondo_play
 from datos.constantes import WIDTH,HEIGHT
 
-imagen_dado_1 = pygame.image.load(resource_path("assets/pikachu.png"))
-imagen_dado_2 = pygame.image.load(resource_path("assets/bulbasur.png"))
-imagen_dado_3 = pygame.image.load(resource_path("assets/charmander.png"))
-imagen_dado_4 = pygame.image.load(resource_path("assets/squirtle.png"))
-imagen_dado_5 = pygame.image.load(resource_path("assets/snorlax.png"))
-imagen_dado_6 = pygame.image.load(resource_path("assets/gengar.png"))
+_pokemon_imagenes = None
 
-pokemon_imagenes = [
-    imagen_dado_1,
-    imagen_dado_2,
-    imagen_dado_3,
-    imagen_dado_4,
-    imagen_dado_5,
-    imagen_dado_6
-]
 
-for i in range(len(pokemon_imagenes)):
-    pokemon_imagenes[i] = pygame.transform.scale(pokemon_imagenes[i], (250, 250))
+def cargar_imagenes_dados():
+    global _pokemon_imagenes
+    if _pokemon_imagenes is None:
+        archivos = [
+            "pikachu.png",
+            "bulbasur.png",
+            "charmander.png",
+            "squirtle.png",
+            "snorlax.png",
+            "gengar.png",
+        ]
+        _pokemon_imagenes = [
+            pygame.transform.scale(
+                pygame.image.load(resource_path(f"assets/{archivo}")).convert_alpha(),
+                (250, 250),
+            )
+            for archivo in archivos
+        ]
+    return _pokemon_imagenes
 
 def tirar_un_dado():
     return random.randint(1, 6)
@@ -194,6 +198,7 @@ def puntaje_total(puntajes):
 def pantalla_jugar(pantalla):
     COLOR_ROJO = (255, 0, 0)
     COLOR_CELESTE = (106,252,236)
+    pokemon_imagenes = cargar_imagenes_dados()
     
     puntajes = {
     'Pikachu (1)': None,          # Unos
@@ -221,6 +226,8 @@ def pantalla_jugar(pantalla):
     fuente = pygame.font.Font(None, 40)
     fuente_fin = pygame.font.Font(None, 50)
     reloj = pygame.time.Clock()
+
+    rect_boton_tirar = pygame.Rect(WIDTH - 200, HEIGHT - 100, 160, 60)
 
     corriendo = True
     while corriendo:

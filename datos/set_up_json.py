@@ -1,5 +1,7 @@
 import json
 import os
+from json import JSONDecodeError
+
 from datos.rutas import writable_path
 
 json_archive = writable_path('datos/set_up.json')
@@ -18,26 +20,24 @@ config__ = {
     }
 }
 
+
 def guardar_datos(archivo, config):
-    with open(archivo, 'w') as datos:
-        json.dump(config, datos, indent=4)
+    with open(archivo, 'w', encoding='utf-8') as datos:
+        json.dump(config, datos, indent=4, ensure_ascii=False)
+
 
 def cargar_datos():
-    # Si NO existe → crear archivo con config por defecto
-    if not os.path.exists(json_archive):
+    if not os.path.exists(json_archive) or os.path.getsize(json_archive) == 0:
         guardar_datos(json_archive, config__)
         return config__
 
-    # Si existe pero está vacío → restaurar valores por defecto
-    if os.path.getsize(json_archive) == 0:
+    try:
+        with open(json_archive, 'r', encoding='utf-8') as datos:
+            datos_cargados = json.load(datos)
+    except JSONDecodeError:
         guardar_datos(json_archive, config__)
         return config__
 
-    # Si existe y tiene datos → cargar
-    with open(json_archive, 'r') as datos:
-        datos_cargados = json.load(datos)
-
-    # Si el archivo está corrupto o falta 'default'
     if 'default' not in datos_cargados:
         guardar_datos(json_archive, config__)
         return config__
